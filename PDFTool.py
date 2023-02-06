@@ -247,3 +247,13 @@ class PDFTool:
             print(1)
         elif self.activeMode != "zusammenführen":
             print(1)
+
+    def refresh(self):
+        try:
+            self.frame_PDFWindow.place_forget()
+            self.frame_PDFButtons.place_forget()
+            self.frame_Viewer.place_forget()
+            self.frame_dreh_settings.place_forget()
+            self.Boolean_Dreh = False
+        except:
+            pass

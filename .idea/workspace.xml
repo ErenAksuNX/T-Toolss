@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0dbe2003-be7f-4dff-8e56-f2e909e92d39" name="Changes" comment="asdf" />
+    <list default="true" id="0dbe2003-be7f-4dff-8e56-f2e909e92d39" name="Changes" comment="asdf">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GUI.py" beforeDir="false" afterPath="$PROJECT_DIR$/GUI.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PDFTool.py" beforeDir="false" afterPath="$PROJECT_DIR$/PDFTool.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Temp/2023-02-09_Fplo 30193_W__230106_T1_NatExRail_D3203.pdf" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -29,21 +34,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "C:/Users/eaksu/OneDrive - National Express Rail GmbH/Desktop/T-Tools/pic",
-    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/eaksu/OneDrive - National Express Rail GmbH/Desktop/T-Tools/pic&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\eaksu\OneDrive - National Express Rail GmbH\Desktop\T-Tools\pic" />
       <recent name="C:\Users\eaksu\OneDrive - National Express Rail GmbH\Desktop\T-Tools" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\eaksu\OneDrive - National Express Rail GmbH\Desktop\T-Tools\Tools\PDFCutter" />
       <recent name="C:\Users\eaksu\OneDrive - National Express Rail GmbH\Desktop\T-Tools\pic" />
     </key>
   </component>

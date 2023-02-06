@@ -312,14 +312,10 @@ class GUI:
             self.master.minsize(500, 500)
             self.master.geometry("500x500")
             self.master.state("normal")
-            try:
-                self.frame_PDFWindow.place_forget()
-                self.frame_PDFButtons.place_forget()
-                self.frame_Viewer.place_forget()
-                self.frame_dreh_settings.place_forget()
-                self.Boolean_Dreh = False
-            except:
-                pass
+
+            self.pdftool.refresh()
+
+
 
     def pdfTool(self):
 
@@ -330,7 +326,7 @@ class GUI:
             pass
 
         self.removeButtons()
-        PDFTool(self.master)
+        self.pdftool = PDFTool(self.master)
 
     def km_ausgabe(self):
 
