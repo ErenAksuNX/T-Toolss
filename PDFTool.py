@@ -11,6 +11,8 @@ from Tools.HelpFunc import *
 
 from win32api import GetSystemMetrics
 
+from Tools.CustomTkinterWidgets import *
+
 
 class PDFTool:
     def __init__(self, master):
@@ -47,23 +49,31 @@ class PDFTool:
                                    background="#e1e1e1")
         self.Lb_PDFFiles.place(relx=.5, rely=0, anchor="n")
 
-        self.bt_select = tk.Button(self.frame_PDFWindow, text="Dateien Hinzufügen", command=self.getPDFList, width=25)
-        self.bt_select.place(anchor="s", y=675, relx=.5)
+        # PDF Window Buttons
 
-        self.bt_delete = tk.Button(self.frame_PDFWindow, text="Entfernen", command=lambda: delete(self.Lb_PDFFiles),
+        self.bt_select = tk.Button(self.frame_PDFWindow, text="Dateien Hinzufügen", command=self.getPDFList, width=25)
+        self.bt_select.place(anchor="n", y=650, relx=.33)
+
+        self.bt_open = tk.Button(self.frame_PDFWindow, text="Datei Öffnen", command=self.openPDF, width=25)
+        self.bt_open.place(anchor="n", y=700, relx=.33)
+
+        self.bt_close = tk.Button(self.frame_PDFWindow, text="Datei schließen", width=25, command=self.deleteOld)
+        self.bt_close.place(anchor="n", y=750, relx=.33)
+
+        self.bt_delete = tk.Button(self.frame_PDFWindow, text="Datei Entfernen", command=lambda: delete(self.Lb_PDFFiles),
                                    width=25)
-        self.bt_delete.place(anchor="n", relx=.5, y=700)
+        self.bt_delete.place(anchor="n", relx=.66, y=650)
 
         self.bt_delete_all = tk.Button(self.frame_PDFWindow, text="Alle Dateien entfernen",
                                        command=lambda: delete_all(self.Lb_PDFFiles),
                                        width=25)
-        self.bt_delete_all.place(anchor="n", relx=.5, y=750)
+        self.bt_delete_all.place(anchor="n", relx=.66, y=700)
 
-        self.bt_open = tk.Button(self.frame_PDFWindow, text="Datei Öffnen", command=self.openPDF, width=25)
-        self.bt_open.place(anchor="n", relx=.5, y=800)
+        self.bt_rename = tk.Button(self.frame_PDFWindow, text="Datei umbenennen", width=25)
+        self.bt_rename.place(anchor="n", relx=.66, y=750)
 
-        self.bt_close = tk.Button(self.frame_PDFWindow, text="Datei schließen", width=25, command=self.deleteOld)
-        self.bt_close.place(anchor="n", relx=.5, y=850)
+        self.en_entry = Entry_with_placeholder(master=self.frame_PDFWindow, placeholder="Neuer Name:", width=50)
+        self.en_entry.place(anchor="n", relx=.5, y=800)
 
         # endregion PDFWindow
 
