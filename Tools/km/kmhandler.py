@@ -42,11 +42,12 @@ class Km:
         except FileNotFoundError as err:
             vpn_error(err)
             return
-
+        except PermissionError as err:
+            doc_open(err)
+            return
         # In diesem Block wird gechecked ob eine Excel Tabelle offen ist
 
         try:
-            self.df_kmstand = pd.read_excel(self.kmstand)
             self.df_auszug = pd.read_excel(self.path)
         except PermissionError as err:
             doc_open(err)
@@ -62,7 +63,7 @@ class Km:
             self.kmlist()
         else:
             showinfo(Title="Datei hat einen ungültigen namen",
-                     message="Error! Datei hat einen ungültigen Namen! \nDienste Tabelle Beginnt min \"Dienste_\" \nDie Kilometerliste beginnt mit \"Kilometerstaende_\"")
+                     message="Error! Datei hat einen ungültigen Namen! \nDienste Tabelle Beginnt mit \"Dienste_\" \nDie Kilometerliste beginnt mit \"Kilometerstaende_\"")
 
     def dienstlist(self):
         for i, row in self.df_auszug.iterrows():  # Für jede Zeile aus dem Railcloud auszug wird überprüft ob der wert
@@ -144,7 +145,7 @@ class Km:
     def auszugErstellen(self):
 
         try:
-            copyfile("pic/Km Blank.xlsx", self.filepath)
+            copyfile("pic/Km Blank2.xlsx", self.filepath)
         except FileExistsError:
             exists(self.filepath)
             return
@@ -153,15 +154,27 @@ class Km:
         self.ws = self.workbook.active
 
         j = 2
-
         for i in self.Fahrzeuge:
-            index = getIndex_km(i) - 2
+            # die getIndex Funktion gibt die Stelle, an der das Fahrzeug befindet zurück
+            index = getIndex_km(i)
 
             self.ws.cell(j, 1).value = i
             self.ws.cell(j, 2).value = self.df_kmstand.at[index, "Kilometerstand"]
             self.ws.cell(j, 4).value = self.df_kmstand.at[index, "Datum"]
 
-            j = j + 1
+            j += 1
+
+        for i in range(j, 37):
+            self.ws.delete_rows(i)
+
+        # for i in self.Fahrzeuge:
+        #     index = getIndex_km(i) - 2
+        #
+        #     self.ws.cell(j, 1).value = i
+        #     self.ws.cell(j, 2).value = self.df_kmstand.at[index, "Kilometerstand"]
+        #     self.ws.cell(j, 4).value = self.df_kmstand.at[index, "Datum"]
+        #
+        #     j = j + 1
 
         # if self.type == "KM":
         #

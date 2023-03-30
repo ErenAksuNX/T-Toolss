@@ -15,7 +15,6 @@ def save_pdf_file(seiten, name):
         writer.write(file_out)
 
 
-
 def wrong_input():
     showwarning(title="Ungültige Eingabe", message="Bitte überprüfe deine Eingabe!")
 
@@ -61,7 +60,7 @@ def clearTemp():
 
 def delete(Lb_PDFFiles: tkinter.Listbox):
     auswahl = Lb_PDFFiles.curselection()
-
+    os.remove("Temp/" + Lb_PDFFiles.get(auswahl))
     for i in auswahl[::-1]:
         Lb_PDFFiles.delete(i)
 
@@ -69,6 +68,10 @@ def delete(Lb_PDFFiles: tkinter.Listbox):
 # Diese Funktion cleart die Listbox
 
 def delete_all(Lb_PDFFiles: tkinter.Listbox):
+
+    for i in range(Lb_PDFFiles.size()):
+        file = Lb_PDFFiles.get(i)
+        os.remove("Temp/" + file)
     Lb_PDFFiles.delete(0, tkinter.END)
 
 

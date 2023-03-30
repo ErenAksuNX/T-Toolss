@@ -1,16 +1,10 @@
 # CRS PDF Files
 
-
 import pytesseract as pyt
 import os.path as osp
 import inspect
 import re
-
-from nltk.corpus import stopwords
 import nltk.corpus
-
-
-from pathlib import Path
 from pdf2image import convert_from_path
 
 
@@ -22,7 +16,7 @@ class OCRHanlder:
         self.stopWords = set(nltk.corpus.stopwords.words("german"))
         filename = inspect.getframeinfo(inspect.currentframe()).filename
         FilePath = osp.dirname(osp.abspath(filename))
-#        self.PopplerPath = Path(FilePath + r"\venv\poppler-22.01.0\Library\bin")
+        #  self.PopplerPath = Path(FilePath + r"\venv\poppler-22.01.0\Library\bin")
         pyt.pytesseract.tesseract_cmd = (FilePath + r'\Tesseract-OCR\tesseract.exe')
         self.DataOfPage = list()
         self.TokensOfPage = list()
@@ -40,14 +34,12 @@ class OCRHanlder:
         return None
 
     def NrOfPages(self):
-
         # OCR alle Pages to List of Tupels
 
         if self.DataOfPage is not None:
             return len(self.DataOfPage)
 
     def OCRFile(self, PDFPath):
-
         # OCR alle Pages to List of Data
 
         self.ImgOfPDF = convert_from_path(PDFPath, dpi=350,  fmt="jpeg", poppler_path="venv/poppler-22.04.0/Library/bin")
@@ -63,6 +55,6 @@ class OCRHanlder:
         # Remove unnecessary Token from the list for better analysation
 
         for Token in allTokens:
-            if (not bool(re.search('[a-zA-Z0-9]', Token))) or (len(Token) < 3) or (Token in self.stopWords):
+            if (not bool(re.search('[a-zA-Z\d]', Token))) or (len(Token) < 3) or (Token in self.stopWords):  # \d ist bei re eine ziffer
                 allTokens.remove(Token)
         return allTokens

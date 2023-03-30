@@ -15,6 +15,8 @@ from Tools.HelpFunc import clearTemp
 
 from PDFTool import PDFTool
 
+from defaults import *
+
 
 # Abkürzungen
 # bt = Betriebstage || Button
@@ -48,27 +50,7 @@ class GUI:
         self.Boolean_Dreh = False
         self.bg_logo2 = None
         self.img_logo2 = None
-        self.activeFile = None
         self.bt_open = None
-        self.view1 = None
-        self.bt_drehen = None
-        self.img_drehen = None
-        self.bt_save = None
-        self.bt_Analyse = None
-        self.img_Save = None
-        self.img_Start = None
-        self.frame_Viewer = None
-        self.bt_delete_all = None
-        self.menu_Programm = None
-        self.menu_fullscreen = None
-        self.bt_delete = None
-        self.img_zusammenfuegen = None
-        self.bt_extrahieren = None
-        self.bt_Zusammenfuegen = None
-        self.img_teilen = None
-        self.PDFList = None
-        self.bt_select = None
-        self.Lb_PDFFiles = None
         self.frame_PDFButtons = None
         self.frame_PDFWindow = None
         self.menu_options = None
@@ -119,9 +101,9 @@ class GUI:
         self.bt_ausgabe()
 
         # Bei den Labels wird ein Hintergrund gegeben, weil sie sonst einen weißen Hintergrund haben #8ec9e9 ist das NX Baby blau
-        self.lb_anleitung.config(background="#8ec9e9")
-        self.lb_bt_auswahltext.config(background="#8ec9e9")
-        self.lb_auswahltext.config(background="#8ec9e9")
+        self.lb_anleitung.config(background=NX_BACKGROUND_COLOR)
+        self.lb_bt_auswahltext.config(background=NX_BACKGROUND_COLOR)
+        self.lb_auswahltext.config(background=NX_BACKGROUND_COLOR)
 
     def buttons(self):
 
@@ -144,14 +126,14 @@ class GUI:
         self.master.bind("<Escape>", self.closeFullscreen)
 
         # Hier wird der BG hinzugefügt
-        self.master.config(background="#8ec9e9")
+        self.master.config(background=NX_BACKGROUND_COLOR)
 
         self.img_zug = PhotoImage(file="data/zuege_freigestellt.png")
-        self.bg_zug = Label(self.master, image=self.img_zug, background='#8ec9e9', anchor="sw")
+        self.bg_zug = Label(self.master, image=self.img_zug, background=NX_BACKGROUND_COLOR, anchor="sw")
         self.bg_zug.place(relx=.0, rely=1.0, anchor="sw")
 
         self.img_logo = PhotoImage(file="pic/natex_stacked_png.png")
-        self.bg_logo = Label(self.master, image=self.img_logo, background='#8ec9e9', anchor='se')
+        self.bg_logo = Label(self.master, image=self.img_logo, background=NX_BACKGROUND_COLOR, anchor='se')
         self.bg_logo.place(rely=1, relx=1, anchor='se')
 
         # Hier werden die Buttons erstellt, womit man Die Dateien wählen kann einen speicherort wählen kann und das Programm starten kann
@@ -192,7 +174,7 @@ class GUI:
 
     # region Fullscreen
 
-    def fullscreen(self, x):
+    def fullscreen(self, x=None):
 
         print(x)
 
@@ -314,8 +296,6 @@ class GUI:
             self.master.state("normal")
 
             self.pdftool.refresh()
-
-
 
     def pdfTool(self):
 
